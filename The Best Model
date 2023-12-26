@@ -1,0 +1,11 @@
+import pandas as pd
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+
+data = pd.read_csv("Des.csv")   #You can calculate 'Des.csv' based on the data in the Supporting Information.xlsx
+X = data.drop('Label', axis=1)
+y = data['Label']
+
+model = RandomForestClassifier(class_weight='balanced_subsample', criterion= 'gini', max_depth=13, n_estimators= 300)
+
+model.fit(X, y)
